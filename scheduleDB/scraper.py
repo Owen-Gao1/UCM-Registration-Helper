@@ -11,6 +11,7 @@ class serachSession:
     courseSearchResults = "/StudentRegistrationSsb/ssb/courseSearchResults/courseSearchResults"
     courseDetailsEndpoint = "/StudentRegistrationSsb/ssb/searchResults/searchResults" 
     linkedCouresEndpoint = "/StudentRegistrationSsb/ssb/searchResults/fetchLinkedSections"
+    resetDataFromEndpoint = "/StudentRegistrationSsb/ssb/courseSearch/resetDataForm"
 
 
     def __init__(self, currentSemester: int) -> None:
@@ -138,4 +139,13 @@ class serachSession:
             return
         return r.json()["linkedData"]
         
+    def resetDataFrom(self):
+        URL = self.protocol+self.authority+self.resetDataFromEndpoint
+        data = {
+            "resetCourses": False,
+            "resetSections": True
+        }
+        r = self.session.post(URL,data= data)
+        return
+
 
